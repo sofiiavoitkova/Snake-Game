@@ -91,6 +91,7 @@ function move() {
 //   draw();
 // }, 200);
 
+// Start game function
 function startGame() {
   gameStarted = true;
   instructionText.style.display = "none";
@@ -161,6 +162,7 @@ function resetGame() {
   direction = "right";
   gameSpeedDelay = 200;
   updateScore();
+  updateHighScore();
 }
 
 function updateScore() {
@@ -173,4 +175,13 @@ function stopGame() {
   gameStarted = false;
   instructionText.style.display = "block";
   logo.style.display = "block";
+}
+
+function updateHighScore() {
+  const currentScore = snake.length - 1;
+  if (currentScore > highScore) {
+    highScore = currentScore;
+    highScoreText.textContent = highScore.toString().padStart(3, "0");
+  }
+  highScoreText.style.display = "block";
 }
